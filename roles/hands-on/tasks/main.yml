@@ -1,0 +1,17 @@
+---
+- name: create user
+  user:
+    name: hands-on-user01
+    createhome: yes
+    state: present
+    password: "{{ 'hands-on' | password_hash('sha512') }}"
+
+- name: modify sshd_config
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    backrefs: yes
+    regexp: '^#PasswordAuthentication'
+    line: '^PasswordAuthentication'
+  notify:
+    - restart sshd

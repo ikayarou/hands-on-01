@@ -1,0 +1,5 @@
+---
+- hosts: client_node
+  become: True
+  roles:
+    - hands-on
