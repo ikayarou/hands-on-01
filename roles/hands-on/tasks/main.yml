@@ -11,7 +11,7 @@
     dest: /etc/ssh/sshd_config
     state: present
     backrefs: yes
-    regexp: '^#PasswordAuthentication'
-    line: '^PasswordAuthentication'
+    regexp: '^PasswordAuthentication no'
+    line: 'PasswordAuthentication yes'
   notify:
     - restart sshd
